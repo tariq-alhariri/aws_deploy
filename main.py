@@ -110,20 +110,5 @@ def _get_jwt(user_data):
                'email': user_data['email']}
     return jwt.encode(payload, JWT_SECRET, algorithm='HS256')
 
-@APP.errorhandler(401)
-def unauthorized(error):
-    return jsonify({
-        "success": False,
-        "error": 401,
-        "message": "UnAuthorized"
-    }), 401
-@APP.errorhandler(400)
-def bad_request(error):
-    return jsonify({
-        "success": False,
-        "error": 400,
-        "message": "Bad Request"
-    }), 400
-
 if __name__ == '__main__':
     APP.run(host='127.0.0.1', port=8080, debug=True)
